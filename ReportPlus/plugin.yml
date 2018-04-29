@@ -4,3 +4,5 @@ main: me.fallenspring.reportplus.Main
 commands:
   report:
     description: Report command
+  reportgui:
+    description: Report GUI  

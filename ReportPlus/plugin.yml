@@ -1,0 +1,6 @@
+name: ReportPlus
+version: 1.0
+main: me.fallenspring.reportplus.Main
+commands:
+  report:
+    description: Report command

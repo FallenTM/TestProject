@@ -65,6 +65,9 @@ public class Main extends JavaPlugin {
 					player.sendMessage(ChatColor.RED + "Report Submitted.");
 				}
 			}
+			if (cmd.getName().equalsIgnoreCase("reportgui")) {
+				player.openInventory(inv);
+			}
 		}
 		return false;
 	}

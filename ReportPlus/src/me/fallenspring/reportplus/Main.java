@@ -16,7 +16,6 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class Main extends JavaPlugin {
 	
-	private ArrayList<Player> players = new ArrayList<Player>();
 	private Inventory inv = Bukkit.createInventory(null, 27, "Reports Inventory");
 	
 	public void onEnable() {
@@ -46,15 +45,12 @@ public class Main extends JavaPlugin {
 			}
 			String message = sb.toString().trim();
 			for (Player admins : Bukkit.getOnlinePlayers()) {
-				if (!players.isEmpty()) {
-					if (admins.hasPermission("Reportplus.allow")) {
-						admins.sendMessage(ChatColor.RED + "-=[Reports Plus]");
-						admins.sendMessage(ChatColor.RED + "Reported Player: " + target.getName());
-						admins.sendMessage(ChatColor.RED + "Reported by: " + player.getName());
-						admins.sendMessage(ChatColor.RED + "Reason " + message);
-						admins.sendMessage(ChatColor.RED + "-=[Reports Plus]");
-					}
-				} else {
+				if (admins.hasPermission("Reportplus.allow")) {
+					admins.sendMessage(ChatColor.RED + "-=[Reports Plus]");
+					admins.sendMessage(ChatColor.RED + "Reported Player: " + target.getName());
+					admins.sendMessage(ChatColor.RED + "Reported by: " + player.getName());
+					admins.sendMessage(ChatColor.RED + "Reason " + message);
+					admins.sendMessage(ChatColor.RED + "-=[Reports Plus]");
 					ItemStack i = new ItemStack(Material.PAPER);
 					ItemMeta meta = i.getItemMeta();
 					meta.setDisplayName("Report");
@@ -66,6 +62,7 @@ public class Main extends JavaPlugin {
 						amount++;
 						inv.setItem(amount, i);
 					}
+					player.sendMessage(ChatColor.RED + "Report Submitted.");
 				}
 			}
 		}
